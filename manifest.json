@@ -1,0 +1,18 @@
+{
+    "manifest_version": 2,
+    "name": "Floating Button Extension",
+    "version": "1.0",
+    "description": "A simple extension that creates a floating button at the bottom right of the screen",
+    "permissions": [
+      "activeTab"
+    ],
+    "content_scripts": [
+      {
+        "matches": ["https://*/*", "http://*/*"],
+        "js": ["script.js"],
+        "css": ["styles.css", "sb-admin-2_min.css", "all.min.css"],
+        "run_at": "document_end"
+      }
+    ]
+  }
+  
