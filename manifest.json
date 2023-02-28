@@ -10,7 +10,7 @@
       {
         "matches": ["https://*/*", "http://*/*"],
         "js": ["script.js"],
-        "css": ["styles.css", "sb-admin-2_min.css", "all.min.css"],
+        "css": ["styles.css", "sb-admin-2_min.css", "all.min.css", "changed.css"],
         "run_at": "document_end"
       }
     ]
