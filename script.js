@@ -7,6 +7,7 @@ outerDiv.id = 'bottom'
 let talkDiv = document.createElement('div')
 talkDiv.className = "chat-popup"
 talkDiv.id = "myForm"
+talkDiv.hidden = true
 talkDiv.style = 'background-color:#FCF5E5; margin-bottom:2em; margin-right: 2em; display:flex; justify-content: center;'
 
 let outerForm = document.createElement('form')
@@ -33,16 +34,13 @@ let margin = document.createElement('div')
 margin.style = "margin:2em"
 
 let margin2 = document.createElement('div')
-margin2.style = "margin:2em"
-
-let margin3 = document.createElement('div')
-margin3.style = "margin:2em"
+margin2.style = "margin:1em"
 
 let q2 = document.createElement('div')
 q2.className = 'form-wrapper'
 
 let p2 = document.createElement('p')
-p2.innerText = "How Stressed Are You?"
+p2.innerText = "How Are You Feeling?"
 
 let innerFormDiv = document.createElement('div')
 innerFormDiv.style = "display: flex; justify-content: center;"
@@ -209,8 +207,20 @@ formText.appendChild(q1)
 formText.appendChild(margin)
 formText.appendChild(q2)
 formText.appendChild(margin2)
-formText.appendChild(margin3)
 formText.appendChild(subBtnDiv)
+
+let errDiv = document.createElement('div')
+errDiv.style = 'display:flex; text-align: center; margin-top:0.5em'
+errDiv.hidden = true
+errDiv.id = 'errDiv'
+
+let errTxt = document.createElement('p')
+errTxt.innerText = 'There is no participant ID saved. Please log in and refresh the page!'
+errTxt.style = 'color:red'
+
+errDiv.appendChild(errTxt)
+formText.appendChild(errDiv)
+
 
 outerForm.appendChild(formText)
 
@@ -244,6 +254,14 @@ document.onkeydown = function(evt) {
     }
 };
     window.addEventListener('load', function() {
+        if (localStorage.stress_analyt == undefined){
+            document.getElementById('subBtn').disabled = true
+            document.getElementById('errDiv').hidden = false
+        } else {
+            document.getElementById('subBtn').disabled = false
+            document.getElementById('errDiv').hidden = true
+        }
+
         let mybutton = document.getElementById("btn-back-to-top");
         let ratings = document.getElementsByName('rating');
 
@@ -252,7 +270,6 @@ document.onkeydown = function(evt) {
 
         const form = document.getElementById('my-form');
         form.addEventListener("submit", function(e) {
-            console.log('asdfasdf')
             e.preventDefault();
             document.getElementById('subBtn').disabled = true
             let val, ind;
@@ -266,6 +283,11 @@ document.onkeydown = function(evt) {
             const data = new FormData(form);
             data.append('Problem', document.getElementById('Textarea1').value)
             data.append('Rating', val)
+            data.append('ID', localStorage.stress_analyt)
+            data.append('URL', window.location.href)
+            data.append('Title', document.title)
+            data.append('Scroll_X_Position', window.scrollX)
+            data.append('Scroll_Y_Position', window.scrollY)
             const action = e.target.action;
             fetch(action, {
                 method: 'POST',

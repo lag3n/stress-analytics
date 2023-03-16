@@ -1,8 +1,8 @@
 {
     "manifest_version": 2,
-    "name": "Floating Button Extension",
+    "name": "Stress Analytics Workshop @ Harvard",
     "version": "1.0",
-    "description": "A simple extension that creates a floating button at the bottom right of the screen",
+    "description": "A simple extension that creates a floating reporting form at the bottom of the screen.",
     "permissions": [
       "activeTab"
     ],
