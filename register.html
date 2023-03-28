@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <title>Register Page</title>
+  <link rel="stylesheet" href="css/form.css">
+</head>
+
+<body>
+
+    <div class="alert-box">
+        <p class="alert"></p>
+    </div>
+
+    <div class="form">
+        <h1 class="heading">Register</h1>
+        <input id="re" type="email" placeholder="Enter Email" autocomplete="off" class="email" required>
+        <input id="rp" type="password" placeholder="Enter Password" autocomplete="off" class="password" required>
+        <input id="rrp" type="password" placeholder="Confirm Password" autocomplete="off" class="confirm password" required>
+        <button type="submit" onclick="register()" value="Submit" class="submit">Create Account</button>
+        <a href="/login.html" class="link">Already have an account? Log In</a>
+    </div>
+
+  </div>
+</form>
+
+
+    <script src="form.js"></script>
+    <script src="elephantsql.js"></script>
+    <script src="server.js"></script>
+
+</body>
