@@ -38,7 +38,9 @@ function register(){
         emailArray.push(email);
         passwordArray.push(password);
 
-        alert(email + " Thanks for making an account! \nPlease log in now");
+        alert(email + " Thanks for making an account!");
+
+        window.location.href('/login.html');
 
         document.getElementById("re").value ="";
         document.getElementById("rp").value="";
@@ -74,7 +76,9 @@ function login(){
         return ;
     }
     else {
-        alert(email + " You're logged in!");
+        alert("You're logged in!");
+
+        window.location.href('/index.html');
 
         document.getElementById("se").value ="";
         document.getElementById("sp").value="";
@@ -82,63 +86,63 @@ function login(){
     }
 }
 
-// // old code 
-// const email = document.querySelector('.email') || null;
-// const password = document.querySelector('.password');
-// const submitBtn = document.querySelector('.submit');
+// old code 
+const email = document.querySelector('.email') || null;
+const password = document.querySelector('.password');
+const submitBtn = document.querySelector('.submit');
 
-// if(email == null){
-//     submitBtn.addEventListener('click', () => {
-//         fetch('/login-user', {
-//             method: 'post',
-//             headers: new Headers({'Content-Type' : 'application/json'}),
-//             body: JSON.stringify({
-//                 email: email.value,
-//                 password: password.value
-//             })
-//         })
-//         .then(res => res.json())
-//         .then(data => {
-//             validateData(data);
-//         })
-//     })
+if(email == null){
+    submitBtn.addEventListener('click', () => {
+        fetch('/login-user', {
+            method: 'post',
+            headers: new Headers({'Content-Type' : 'application/json'}),
+            body: JSON.stringify({
+                email: email.value,
+                password: password.value
+            })
+        })
+        .then(res => res.json())
+        .then(data => {
+            validateData(data);
+        })
+    })
 
-// } else {
-//     submitBtn.addEventListener('click', () => {
-//         fetch('/register-user', {
-//             method: 'post',
-//             headers: new Headers({'Content-Type' : 'application/json'}),
-//             body: JSON.stringify({
-//                 email: email.value,
-//                 password: password.value
-//             })
-//         })
-//         .then(res => res.json())
-//         .then(data => {
-//             validateData(data);
-//         })
-//     })
-// }
+} else {
+    submitBtn.addEventListener('click', () => {
+        fetch('/register-user', {
+            method: 'post',
+            headers: new Headers({'Content-Type' : 'application/json'}),
+            body: JSON.stringify({
+                email: email.value,
+                password: password.value
+            })
+        })
+        .then(res => res.json())
+        .then(data => {
+            validateData(data);
+        })
+    })
+}
 
-// const validateData = (data) => {
-//     if(!data.name){
-//         alertBox(data);
-//     } else{
-//         sessionStorage.email = data.email;
-//         location.href = '/';    
-//     }
-// }
+const validateData = (data) => {
+    if(!data.name){
+        alertBox(data);
+    } else{
+        sessionStorage.email = data.email;
+        location.href = '/';    
+    }
+}
 
-// const alertBox = (data) => {
-//     const alertContainer = document.querySelector('.alert-box');
-//     const alertMsg = document.querySelector('.alert');
-//     alertMsg.innerHTML = data;
+const alertBox = (data) => {
+    const alertContainer = document.querySelector('.alert-box');
+    const alertMsg = document.querySelector('.alert');
+    alertMsg.innerHTML = data;
 
-//     alertContainer.style.top = '5%';
-//     setTimeout(() => {
-//         alertContainer.style.top = null;
-//     }, 5000);
-// }
+    alertContainer.style.top = '5%';
+    setTimeout(() => {
+        alertContainer.style.top = null;
+    }, 5000);
+}
 
 
 
