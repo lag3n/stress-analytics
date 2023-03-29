@@ -38,16 +38,16 @@ function register(){
         emailArray.push(email);
         passwordArray.push(password);
 
-        alert(email + " Thanks for making an account!");
+        alert("Thanks for making an account!");
 
-        window.location.href('/login.html');
+        window.location.href('/login-student.html');
 
         document.getElementById("re").value ="";
         document.getElementById("rp").value="";
         document.getElementById("rrp").value="";
     }
     else{
-        alert(email + " is already registered");
+        alert("Your email is already associated with an account");
         return ;
     }
 }
@@ -77,8 +77,10 @@ function login(){
     }
     else {
         alert("You're logged in!");
+        // if researcher, go to researcher home
 
-        window.location.href('/index.html');
+        // if student, go to student home
+        window.location.href("/index.html");
 
         document.getElementById("se").value ="";
         document.getElementById("sp").value="";
