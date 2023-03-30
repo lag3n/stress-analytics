@@ -9,7 +9,6 @@ var passwordArray=[];
 
 var loginBox = document.getElementById("login");
 var regBox = document.getElementById("register");
-var forgetBox = document.getElementById("forgot");
 
 function register(){
     event.preventDefault();
