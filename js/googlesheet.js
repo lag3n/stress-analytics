@@ -1,6 +1,6 @@
 const form = document.querySelector("#form")
 const submitButton = document.querySelector("#submit")
-const scriptURL = 'https://script.google.com/macros/s/AKfycbwG9vCMBREFM4suhSiTdVPFu7-F-6JclKyZGGuKjFS-dqaZT6kKXS6r_15kub3YH2R5yw/exec'
+const scriptURL = 'https://script.google.com/macros/sAKfycbzvLQt_MlsiEQCcBxGg1YGId5yIGNXwh3Xn7kQZG2tK2bGRiF9B1_qJVkCYTPEhmiiAOw/exec'
 
 form.addEventListener('submit', e => {
  submitButton.disabled = true
@@ -16,4 +16,4 @@ form.addEventListener('submit', e => {
    submitButton.disabled = false
    }
    )
-   })
+})
