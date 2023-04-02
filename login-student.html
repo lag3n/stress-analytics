@@ -21,6 +21,7 @@
       .then(data => {
       if (data.length > 0) {
         // User is authenticated
+        alert("You're logged in!")
         var userId = data[0].User_ID;
         // Store user ID in a cookie or session variable
         document.cookie = "userId=" + userId;
