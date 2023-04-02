@@ -6,8 +6,37 @@
   <title>Register Page</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="css/form.css">
+  <script
+		src="https://code.jquery.com/jquery-3.4.1.js"
+		integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+		crossorigin="anonymous">
+  </script>
+	<script>
+		function SubForm (){
+			$.ajax({
+				url:"https://api.apispreadsheets.com/data/qqLqfe5C0K04CCRI/",
+				type:"post",
+				data:$("#registerForm").serializeArray(),
+				success: function(){
+          var email = document.getElementById("re").value;
+          var password = document.getElementById("rp").value;
+          if (email != "" && password != "") {
+            alert("Account successfully made!")
+            window.location.href = "index.html"
+          }
+				},
+				error: function(){
+          if (email == "") {
+            alert("Please enter your email")
+          }
+          else if (password == "") {
+            alert("Please enter your password")
+          }
+				}
+			});
+		}
+	</script>
 </head>
-
 <body>
   <body>
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
@@ -31,10 +60,10 @@
 
     <div>
       <h1 class="heading">Create Account</h1>
-      <form method="POST" action="https://script.google.com/macros/s/AKfycbzvLQt_MlsiEQCcBxGg1YGId5yIGNXwh3Xn7kQZG2tK2bGRiF9B1_qJVkCYTPEhmiiAOw/exec">
+      <form id="registerForm">
         <input id="re" name="User_Email" type="email" placeholder="Enter Email" class="email" required>
         <input id="rp" name="User_PW" type="text" placeholder="Enter Password" class="password" required>
-        <button id="submit" onclick="window.location.href = 'index.html';" value="Submit" class="submit" type="submit">Create Account</button>
+        <button id="submit" value="Submit" class="submit" type="submit" onclick='SubForm()'>Create Account</button>
       </form>
       <a href="login-student.html" class="link">Already have an account? Log In</a>
     </div>
@@ -49,7 +78,7 @@
       </form>
       <a href="login-student.html" class="link">Already have an account? Log In</a>
       </div> -->
-    </div>
+
   <!-- </div>
   <script>
     function register(){
@@ -134,8 +163,8 @@
     })
   </script> -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-  <!-- <script src="js/googlesheet.js"></script>
+  <!-- <script src="js/googlesheet.js"></script> -->
   <script src="js/form.js"></script>
-  <script src="js/home.js"></script> -->
+  <!-- <script src="js/home.js"></script> -->
 
 </body>

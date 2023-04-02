@@ -1,107 +1,126 @@
-window.onload = () => {
-    if(sessionStorage.email){
-        location.href = '/';
-    }
-}
+function CreateUUID() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+      var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+      return v.toString(16);
+    });
+  }
 
-var loginBox = document.getElementById("login");
-var regBox = document.getElementById("register");
+fetch("https://api.apispreadsheets.com/data/qqLqfe5C0K04CCRI/", {
+	method: "POST",
+	body: JSON.stringify({"data": {"User_ID":CreateUUID(),"User_PW":"test1","User_Email":"test1@gmail.com"}}),
+}).then(res =>{
+	if (res.status === 201){
+		// SUCCESS
+	}
+	else{
+		// ERROR
+	}
+})
+
+// window.onload = () => {
+//     if(sessionStorage.email){
+//         location.href = '/';
+//     }
+// }
+
+// var loginBox = document.getElementById("login");
+// var regBox = document.getElementById("register");
 
 
-function register(){
-    // event.preventDefault();
-    var email = document.getElementById("re").value;
-    var password = document.getElementById("rp").value;
-    var passwordRetype = document.getElementById("rrp").value;
+// function register(){
+//     // event.preventDefault();
+//     var email = document.getElementById("re").value;
+//     var password = document.getElementById("rp").value;
+//     var passwordRetype = document.getElementById("rrp").value;
 
-    if (email == ""){
-        alert("Email required.");
-        return ;
-    }
-    else if (password == ""){
-        alert("Password required.");
-        return ;
-    }
-    else if (passwordRetype == ""){
-        alert("Password required.");
-        return ;
-    }
-    else if ( password != passwordRetype ){
-        alert("Passwords don't match");
-        return;
-    }
-    else if(true){
+//     if (email == ""){
+//         alert("Email required.");
+//         return ;
+//     }
+//     else if (password == ""){
+//         alert("Password required.");
+//         return ;
+//     }
+//     else if (passwordRetype == ""){
+//         alert("Password required.");
+//         return ;
+//     }
+//     else if ( password != passwordRetype ){
+//         alert("Passwords don't match");
+//         return;
+//     }
+//     else if(true){
 
-        const form = document.querySelector("#form")
-        const submitButton = document.querySelector("#submit")
-        document.getElementById("demo").innerHTML = "test"
+//         const form = document.querySelector("#form")
+//         const submitButton = document.querySelector("#submit")
+//         document.getElementById("demo").innerHTML = "test"
 
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbzvLQt_MlsiEQCcBxGg1YGId5yIGNXwh3Xn7kQZG2tK2bGRiF9B1_qJVkCYTPEhmiiAOw/exec'
+//         const scriptURL = 'https://script.google.com/macros/s/AKfycbzvLQt_MlsiEQCcBxGg1YGId5yIGNXwh3Xn7kQZG2tK2bGRiF9B1_qJVkCYTPEhmiiAOw/exec'
 
-        submitButton.disabled = true
-        let requestBody = {
-          email, password, passwordRetype
-        }
-        console.log(requestBody)
-        fetch(scriptURL, {method: 'POST', body: requestBody} )
-        .then(response => {
-              alert('Success!', response)
-              console.log(response.body)
-              submitButton.disabled = false
-        })
-        .catch(error => {
-        alert('Error!', error.message)
-        submitButton.disabled = false
-        })
+//         submitButton.disabled = true
+//         let requestBody = {
+//           email, password, passwordRetype
+//         }
+//         console.log(requestBody)
+//         fetch(scriptURL, {method: 'POST', body: requestBody} )
+//         .then(response => {
+//               alert('Success!', response)
+//               console.log(response.body)
+//               submitButton.disabled = false
+//         })
+//         .catch(error => {
+//         alert('Error!', error.message)
+//         submitButton.disabled = false
+//         })
 
-        alert("Thanks for making an account!");
+//         alert("Thanks for making an account!");
 
-        window.location.href("login-student.html");
+//         window.location.href("login-student.html");
 
-        document.getElementById("re").value ="";
-        document.getElementById("rp").value="";
-        document.getElementById("rrp").value="";
-    }
-    else{
-        alert("Your email is already associated with an account");
-        return ;
-    }
-}
+//         document.getElementById("re").value ="";
+//         document.getElementById("rp").value="";
+//         document.getElementById("rrp").value="";
+//     }
+//     else{
+//         alert("Your email is already associated with an account");
+//         return ;
+//     }
+// }
 
-function login(){
-    var email = document.getElementById("se").value;
-    var password = document.getElementById("sp").value;
+// function login(){
+//     var email = document.getElementById("se").value;
+//     var password = document.getElementById("sp").value;
 
-    var i = emailArray.indexOf(email);
+//     var i = emailArray.indexOf(email);
 
-    if(emailArray.indexOf(email) == -1){
-        if (email == ""){
-            alert("Email required.");
-            return ;
-        }
-        alert("Email does not exist.");
-        return ;
-    }
-    else if(passwordArray[i] != password){
-        if (password == ""){
-            alert("Password required.");
-            return ;
-        }
-        alert("Password does not match.");
-        return ;
-    }
-    else {
-        alert("You're logged in!");
-        // if researcher, go to researcher home
+//     if(emailArray.indexOf(email) == -1){
+//         if (email == ""){
+//             alert("Email required.");
+//             return ;
+//         }
+//         alert("Email does not exist.");
+//         return ;
+//     }
+//     else if(passwordArray[i] != password){
+//         if (password == ""){
+//             alert("Password required.");
+//             return ;
+//         }
+//         alert("Password does not match.");
+//         return ;
+//     }
+//     else {
+//         alert("You're logged in!");
+//         // if researcher, go to researcher home
 
-        // if student, go to student home
-        window.location.href("index.html");
+//         // if student, go to student home
+//         window.location.href("index.html");
 
-        document.getElementById("se").value ="";
-        document.getElementById("sp").value="";
-        return ;
-    }
-}
+//         document.getElementById("se").value ="";
+//         document.getElementById("sp").value="";
+//         return ;
+//     }
+// }
 
 // // old code 
 // const email = document.querySelector('.email') || null;
