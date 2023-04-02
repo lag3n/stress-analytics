@@ -1,21 +1,4 @@
-function CreateUUID() {
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-      var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
-      return v.toString(16);
-    });
-  }
 
-fetch("https://api.apispreadsheets.com/data/qqLqfe5C0K04CCRI/", {
-	method: "POST",
-	body: JSON.stringify({"data": {"User_ID":CreateUUID(),"User_PW":"test1","User_Email":"test1@gmail.com"}}),
-}).then(res =>{
-	if (res.status === 201){
-		// SUCCESS
-	}
-	else{
-		// ERROR
-	}
-})
 
 // window.onload = () => {
 //     if(sessionStorage.email){
