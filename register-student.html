@@ -9,7 +9,6 @@
 </head>
 
 <body>
-
   <body>
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
@@ -26,28 +25,117 @@
       </div>
     </nav>
 
-    <div class="alert-box">
+    <!-- <div class="alert-box">
         <p class="alert"></p>
-    </div>
+    </div> -->
 
-    <div class="form">
+    <div>
+      <h1 class="heading">Create Account</h1>
+      <form method="POST" action="https://script.google.com/macros/s/AKfycbzvLQt_MlsiEQCcBxGg1YGId5yIGNXwh3Xn7kQZG2tK2bGRiF9B1_qJVkCYTPEhmiiAOw/exec">
+        <input id="re" name="User_Email" type="email" placeholder="Enter Email" class="email" required>
+        <input id="rp" name="User_PW" type="text" placeholder="Enter Password" class="password" required>
+        <button id="submit" onclick="window.location.href = 'index.html';" value="Submit" class="submit" type="submit">Create Account</button>
+      </form>
+      <a href="login-student.html" class="link">Already have an account? Log In</a>
+    </div>
+    
+      <!-- <div>
         <h1 class="heading">Create Account</h1>
-        <input id="re" type="email" placeholder="Enter Email" autocomplete="off" class="email" required>
-        <input id="rp" type="password" placeholder="Enter Password" autocomplete="off" class="password" required>
+        <form method="POST" action="https://script.google.com/macros/s/AKfycbzvLQt_MlsiEQCcBxGg1YGId5yIGNXwh3Xn7kQZG2tK2bGRiF9B1_qJVkCYTPEhmiiAOw/exec"></form>
+        <input id="re" name="User_Email" type="email" placeholder="Enter Email" autocomplete="off" class="email" required>
+        <input id="rp" name="User_PW" type="password" placeholder="Enter Password" autocomplete="off" class="password" required>
         <input id="rrp" type="password" placeholder="Confirm Password" autocomplete="off" class="confirm password" required>
-        <button type="submit" onclick="register()" value="Submit" class="submit">Create Account</button>
-        <a href="login-student.html" class="link">Already have an account? Log In</a>
-
-      </div>
-        
+        <button id="submit" onclick="register()" value="Submit" class="submit" type="submit">Create Account</button>
+      </form>
+      <a href="login-student.html" class="link">Already have an account? Log In</a>
+      </div> -->
     </div>
-  </div>
-</form>
+  <!-- </div>
+  <script>
+    function register(){
+    // event.preventDefault();
+    var email = document.getElementById("re").value;
+    var password = document.getElementById("rp").value;
+    // var passwordRetype = document.getElementById("rrp").value;
 
+    if (email == ""){
+        alert("Email required.");
+        return ;
+    }
+    else if (password == ""){
+        alert("Password required.");
+        return ;
+    }
+    // else if (passwordRetype == ""){
+    //     alert("Password required.");
+    //     return ;
+    // }
+    // else if ( password != passwordRetype ){
+    //     alert("Passwords don't match");
+    //     return;
+    // }
+    else if(true){
+
+        const form = document.querySelector("#form")
+        const submitButton = document.querySelector("#submit")
+
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzvLQt_MlsiEQCcBxGg1YGId5yIGNXwh3Xn7kQZG2tK2bGRiF9B1_qJVkCYTPEhmiiAOw/exec'
+
+        submitButton.disabled = true
+        let requestBody = {
+          email, password
+        }
+        
+        console.log(requestBody)
+        fetch(scriptURL, {method: 'POST', body: requestBody} )
+        .then(response => {
+              alert('Success!', response)
+              console.log(response.body)
+              submitButton.disabled = false
+        })
+        .catch(error => {
+        alert('Error!', error.message)
+        submitButton.disabled = false
+        })
+
+        alert("Thanks for making an account!");
+
+        window.location.href("login-student.html");
+
+        document.getElementById("re").value ="";
+        document.getElementById("rp").value="";
+        document.getElementById("rrp").value="";
+    }
+    else{
+        alert("Your email is already associated with an account");
+        return ;
+    }
+}
+  </script> -->
+  <!-- <script>
+    const form = document.querySelector("#form")
+    const submitButton = document.querySelector("#submit")
+    const scriptURL = 'https://script.google.com/macros/sAKfycbzvLQt_MlsiEQCcBxGg1YGId5yIGNXwh3Xn7kQZG2tK2bGRiF9B1_qJVkCYTPEhmiiAOw/exec'
+
+    form.addEventListener('submit', e => {
+    submitButton.disabled = true
+    e.preventDefault()
+    let requestBody = new FormData(form)
+    fetch(scriptURL, { method: 'POST', body: requestBody})
+      .then(response => {
+            alert('Success!', response)
+            submitButton.disabled = false
+      })
+      .catch(error => {
+      alert('Error!', error.message)
+      submitButton.disabled = false
+      }
+      )
+    })
+  </script> -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-  <script src="googlesheet.js"></script>
-  <script src="form.js"></script>
-  <script src="home.js"></script>
-  <!-- <script src="server.js"></script> -->
+  <!-- <script src="js/googlesheet.js"></script>
+  <script src="js/form.js"></script>
+  <script src="js/home.js"></script> -->
 
 </body>
