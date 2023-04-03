@@ -1,4 +1,4 @@
-<!-- link to participant db: https://docs.google.com/spreadsheets/d/1_ZHXKTUpRYjFJIwvRn9DMjkgiBiBbHKIXiIGRsjWKCE/edit#gid=0 -->
+<!-- link to participant db: https://docs.google.com/spreadsheets/d/1wEV73KDAlCXaljfLkqUhbhChDyusrJqWPt2Ds_SJ-BU/edit?usp=sharing -->
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
@@ -28,13 +28,20 @@
       console.log(email);
       console.log(password);
 
-      fetch("https://api.apispreadsheets.com/data/qqLqfe5C0K04CCRI/?query=select User_ID from qqLqfe5C0K04CCRI where User_Email='"+email+"' and User_PW='"+password+"'")
+      console.log(fetch("https://api.apispreadsheets.com/data/3GWRr55d1ylSQjYJ/?query=select User_ID from rX8r8Q1tBUBHtnuM where User_Email='"+email+"' and User_PW='"+password+"'"));
+
+      fetch("https://api.apispreadsheets.com/data/3GWRr55d1ylSQjYJ/?query=select User_ID from rX8r8Q1tBUBHtnuM where User_Email='"+email+"' and User_PW='"+password+"'")
       .then(response => response.json())
       .then(data => {
+      console.log(data);
+      console.log(data.length);
       if (data.length > 0) {
         // User is authenticated
         alert("You're logged in!")
         var userId = data[0].User_ID;
+
+        console.log("user id: " + userId);
+
         // Store user ID in a cookie or session variable
         document.cookie = "userId=" + userId;
         // Redirect user to a protected page
