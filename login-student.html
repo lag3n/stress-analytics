@@ -39,14 +39,18 @@
         }
         else {
           const data = await response.json();
-          console.log(data);
-          alert("You're logged in!"); 
-          var userId = data.User_ID;
-          console.log("user id: " + userId);
-          // Store user ID in a cookie or session variable
-          document.cookie = "userId=" + userId;
-          console.log(document.cookie);
-          window.location.href = "index.html";
+          if (data.data.length > 0) {
+            alert("You're logged in!"); 
+            var userId = data.data[0].User_ID;
+            console.log("user id: " + userId);
+            // Store user ID in a cookie or session variable
+            document.cookie = "userId=" + userId;
+            console.log(document.cookie);
+            window.location.href = "index.html";
+          }
+          else {
+            alert("Invalid email or password");
+          }
         }
       }
       getResponse();
