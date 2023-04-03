@@ -45,6 +45,7 @@
           console.log("user id: " + userId);
           // Store user ID in a cookie or session variable
           document.cookie = "userId=" + userId;
+          console.log(document.cookie);
           window.location.href = "index.html";
         }
       }
